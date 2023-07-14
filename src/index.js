@@ -1,3 +1,4 @@
+import './icons.css';
 import './style.css';
 
 const tasks = [
@@ -25,7 +26,7 @@ tasks.forEach((task) => {
   const item = document.createElement('li');
   let html = '<input type="checkbox" value="1"/>';
   html += `<input type="text" value="${task.description}" readonly/>`;
-  html += '<button type="button"></button>';
+  html += '<button type="button" class="icon-drag"></button>';
   item.innerHTML = html;
   fragment.appendChild(item);
 });

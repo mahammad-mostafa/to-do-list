@@ -12,5 +12,5 @@ module.exports = {
   module: {
     rules: [{ test: /\.css$/i, use: ['style-loader', 'css-loader'] }],
   },
-  plugin: [new Html({ template: './src/index.html' })],
+  plugins: [new Html({ template: './src/index.html' })],
 };

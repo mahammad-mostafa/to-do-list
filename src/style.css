@@ -1,0 +1,148 @@
+:root {
+  --text-color: #333;
+  --accent-color: #999;
+  --primary-color: #ddd;
+  --secondary-color: #eee;
+  --bright-color: #fff;
+  --done-color: #090;
+}
+
+html,
+body,
+form,
+h1,
+ul,
+p {
+  font-size: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  font: 16px tahoma, serif;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-color);
+}
+
+button {
+  font-size: inherit;
+  background: none;
+  border: 0;
+}
+
+input[type=text] {
+  flex-grow: 1;
+  font-size: inherit;
+  text-overflow: ellipsis;
+  border: 0;
+  outline: 0;
+}
+
+.section {
+  width: 100%;
+  max-width: 500px;
+  margin: 10px;
+  background-color: var(--bright-color);
+  box-shadow: 0 0 10px var(--primary-color);
+}
+
+.section-heading {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 50px;
+  padding: 0 15px;
+}
+
+.section-heading button,
+.section-form button,
+.section-list button {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  padding: 0;
+  color: var(--accent-color);
+}
+
+.section-heading button:hover,
+.section-form button:hover,
+.section-list button:hover {
+  color: var(--text-color);
+}
+
+.section-form {
+  height: 50px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--primary-color);
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.section-form input {
+  font-style: italic;
+}
+
+.section-list {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary-color);
+  border-radius: 1px;
+}
+
+.section-list li {
+  height: 50px;
+  display: flex;
+  gap: 10px;
+  padding: 0 15px;
+  align-items: center;
+  background-color: var(--bright-color);
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.section-list input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  appearance: none;
+  border-radius: 2px;
+  border: 2px solid var(--accent-color);
+  margin: 0;
+}
+
+.section-list input[type=checkbox]:checked {
+  border: 0;
+}
+
+.section-list input[type=checkbox]:checked::after {
+  content: '\e903';
+  font-size: initial;
+  font-family: icons, serif;
+  color: var(--done-color);
+}
+
+.section-list input[type=checkbox]:hover {
+  border-color: var(--text-color);
+}
+
+.section-list .icon-drag {
+  cursor: move;
+}
+
+.section-button {
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  color: var(--accent-color);
+  padding: 0 15px;
+  background-color: var(--secondary-color);
+}
+
+.section-button:hover {
+  color: var(--text-color);
+  text-decoration: underline;
+}

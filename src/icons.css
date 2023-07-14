@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'icons';
+  src: url('icons.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: 'icons', serif !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-refresh::before {
+  content: "\e900";
+}
+
+.icon-enter::before {
+  content: "\e901";
+}
+
+.icon-drag::before {
+  content: "\e902";
+}
+
+.icon-done::before {
+  content: "\e903";
+}

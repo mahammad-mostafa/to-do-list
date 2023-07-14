@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Simple to do list app",
   "private": true,
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mahammad-mostafa/to-do-list-app.git"
@@ -15,5 +14,8 @@
   "bugs": {
     "url": "https://github.com/mahammad-mostafa/to-do-list-app/issues"
   },
-  "homepage": "https://github.com/mahammad-mostafa/to-do-list-app#readme"
+  "homepage": "https://github.com/mahammad-mostafa/to-do-list-app#readme",
+  "devDependencies": {
+    "hint": "^7.1.10"
+  }
 }

@@ -35,7 +35,6 @@ button {
 input[type=text] {
   flex-grow: 1;
   font-size: inherit;
-  padding: 0 15px;
   text-overflow: ellipsis;
   border: 0;
   outline: 0;
@@ -51,26 +50,34 @@ input[type=text] {
 
 .section-heading {
   height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   line-height: 50px;
   padding: 0 15px;
 }
 
+.section-heading button,
+.section-form button,
+.section-list button {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  padding: 0;
+  color: var(--accent-color);
+}
+
 .section-form {
-  display: flex;
   height: 50px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
   border-top: 1px solid var(--primary-color);
   border-bottom: 1px solid var(--primary-color);
 }
 
 .section-form input {
   font-style: italic;
-}
-
-.section-form button,
-.section-list button {
-  width: 30px;
-  height: 30px;
-  padding: 0;
 }
 
 .section-list {
@@ -83,6 +90,7 @@ input[type=text] {
 .section-list li {
   height: 50px;
   display: flex;
+  gap: 10px;
   padding: 0 15px;
   align-items: center;
   background-color: var(--bright-color);
@@ -92,10 +100,15 @@ input[type=text] {
 .section-list input[type=checkbox] {
   width: 20px;
   height: 20px;
+  cursor: pointer;
   appearance: none;
   border-radius: 2px;
   border: 2px solid var(--accent-color);
   margin: 0;
+}
+
+.section-list .icon-drag {
+  cursor: move;
 }
 
 .section-button {

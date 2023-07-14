@@ -4,6 +4,7 @@
   --primary-color: #ddd;
   --secondary-color: #eee;
   --bright-color: #fff;
+  --done-color: #090;
 }
 
 html,
@@ -111,6 +112,17 @@ input[type=text] {
   border-radius: 2px;
   border: 2px solid var(--accent-color);
   margin: 0;
+}
+
+.section-list input[type=checkbox]:checked {
+  border: 0;
+}
+
+.section-list input[type=checkbox]:checked::after {
+  content: '\e903';
+  font-size: initial;
+  font-family: icons, serif;
+  color: var(--done-color);
 }
 
 .section-list input[type=checkbox]:hover {

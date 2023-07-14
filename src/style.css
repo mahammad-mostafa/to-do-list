@@ -1,6 +1,6 @@
 :root {
-  --text-color: #444;
-  --accent-color: #888;
+  --text-color: #333;
+  --accent-color: #999;
   --primary-color: #ddd;
   --secondary-color: #eee;
   --bright-color: #fff;
@@ -67,6 +67,12 @@ input[type=text] {
   color: var(--accent-color);
 }
 
+.section-heading button:hover,
+.section-form button:hover,
+.section-list button:hover {
+  color: var(--text-color);
+}
+
 .section-form {
   height: 50px;
   padding: 0 15px;
@@ -107,6 +113,10 @@ input[type=text] {
   margin: 0;
 }
 
+.section-list input[type=checkbox]:hover {
+  border-color: var(--text-color);
+}
+
 .section-list .icon-drag {
   cursor: move;
 }
@@ -118,4 +128,9 @@ input[type=text] {
   color: var(--accent-color);
   padding: 0 15px;
   background-color: var(--secondary-color);
+}
+
+.section-button:hover {
+  color: var(--text-color);
+  text-decoration: underline;
 }

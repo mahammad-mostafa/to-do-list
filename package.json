@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "Simple to do list app",
   "private": true,
-  "scripts": {},
+  "scripts": {
+    "start": "webpack serve -open",
+    "build": "webpack"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mahammad-mostafa/to-do-list-app.git"

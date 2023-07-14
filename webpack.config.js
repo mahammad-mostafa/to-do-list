@@ -10,7 +10,7 @@ module.exports = {
     path: Path.resolve(__dirname, './dist'),
   },
   module: {
-    rules: [{ test: /\.css$/i, use: ['style-loader', 'css-loader'] }],
+    rules: [{ test: /\.css$/i, use: ['style-loader', 'css-loader'] }, { test: /\.ttf$/i, type: 'asset/resource' }],
   },
   plugins: [new Html({ template: './src/index.html' })],
 };

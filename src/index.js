@@ -13,13 +13,36 @@ const displayList = () => {
   tasks.items.forEach((task, index) => {
     task.index = index;
     const item = document.createElement('li');
-    let html = `<input type="checkbox" value="${task.index}"/>`;
-    html += `<input type="text" value="${task.description}" readonly/>`;
+    let html = '';
+    if (task.completed) {
+      html += '<input type="checkbox" checked/>';
+      html += `<input type="text" class="completed" value="${task.description}" readonly/>`;
+    } else {
+      html += '<input type="checkbox"/>';
+      html += `<input type="text" value="${task.description}" readonly/>`;
+    }
     html += '<button type="button" class="icon-drag"></button>';
+    item.id = task.index;
     item.innerHTML = html;
     fragment.appendChild(item);
   });
   list.appendChild(fragment);
+};
+
+const listEvent = (event) => {
+  const index = parseInt(event.target.parentNode.id, 10);
+  switch (event.target.type) {
+    case 'checkbox':
+      tasks.items[index].completed = !tasks.items[index].completed;
+      tasks.store();
+      displayList();
+      break;
+    case 'text':
+      break;
+    case 'button':
+      break;
+    default:
+  }
 };
 
 const formEvent = (event) => {
@@ -32,4 +55,5 @@ const formEvent = (event) => {
 };
 
 form.addEventListener('submit', formEvent);
+list.addEventListener('click', listEvent);
 displayList();

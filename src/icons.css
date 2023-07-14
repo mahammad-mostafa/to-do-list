@@ -28,3 +28,7 @@
 .icon-drag::before {
   content: "\e902";
 }
+
+.icon-done::before {
+  content: "\e903";
+}

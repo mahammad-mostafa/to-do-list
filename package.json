@@ -1,0 +1,19 @@
+{
+  "name": "to-do-list-app",
+  "version": "1.0.0",
+  "description": "Simple to do list app",
+  "private": true,
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahammad-mostafa/to-do-list-app.git"
+  },
+  "keywords": [],
+  "author": "Mahammad Mostafa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mahammad-mostafa/to-do-list-app/issues"
+  },
+  "homepage": "https://github.com/mahammad-mostafa/to-do-list-app#readme"
+}

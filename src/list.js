@@ -5,8 +5,8 @@ export default class List {
     this.items = JSON.parse(localStorage.getItem('items')) || [];
   }
 
-  add = (descripiton) => {
-    const task = new Task(descripiton);
+  add = (description) => {
+    const task = new Task(description);
     this.items.push(task);
     this.store();
   }

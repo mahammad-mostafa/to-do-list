@@ -1,6 +1,6 @@
-import Tasks from './list.js';
 import './icons.css';
 import './style.css';
+import Tasks from './list.js';
 
 const tasks = new Tasks();
 const form = document.querySelector('.section-form');
@@ -9,8 +9,7 @@ const list = document.querySelector('.section-list');
 const displayList = () => {
   const fragment = new DocumentFragment();
   list.innerHTML = '';
-  tasks.items.forEach((task, index) => {
-    task.index = index;
+  tasks.items.forEach((task) => {
     const item = document.createElement('li');
     let html = '';
     if (task.completed) {
@@ -31,8 +30,7 @@ const displayList = () => {
 const editEvent = (event) => {
   const index = parseInt(event.target.parentNode.id, 10);
   if (event.target.value.trim()) {
-    tasks.items[index].description = event.target.value.trim();
-    tasks.store();
+    tasks.update(index, event.target.value.trim());
   } else {
     tasks.remove(index);
   }
@@ -44,8 +42,7 @@ const listEvent = (event) => {
   const index = parseInt(event.target.parentNode.id, 10);
   switch (event.target.type) {
     case 'checkbox':
-      tasks.items[index].completed = !tasks.items[index].completed;
-      tasks.store();
+      tasks.complete(index);
       displayList();
       break;
     case 'text':

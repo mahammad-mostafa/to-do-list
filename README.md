@@ -34,12 +34,16 @@ Also config linters for (`HTML` / `CSS3` / `JavaScript`) in the `.github` folder
 📌 **Tech Stack:**
 - Page strucutre is built with `HTML5`
 - Styling is built with `CSS3`
-- Dynamic content built with `JavaScript`
+- Dynamic content is built with `JavaScript`
 
 📌 **Key Features:**
 - Responsive layout for all screens
 - Tasks list is loaded dynamically
+- All tasks are locally stored
+- Check any task for completion
 - Hover effect for icons & buttons
+- Edit any task by clicking on it & typing
+- Add new tasks with maximum of 50 charaters
  
 <p align="right"><a href="#title">back to top</a></p>
 

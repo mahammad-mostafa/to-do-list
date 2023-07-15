@@ -1,3 +1,5 @@
+import status from './status.js';
+
 export default class Task {
   constructor(index, description) {
     this.index = parseInt(index, 10);
@@ -36,7 +38,7 @@ export default class Task {
   }
 
   static complete = (task) => {
-    task.completed = !task.completed;
+    task.completed = status(task.completed);
     return task;
   }
 }

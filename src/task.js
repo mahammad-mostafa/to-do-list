@@ -23,6 +23,8 @@ export default class Task {
 
   static identical = (task, index) => task.index === parseInt(index, 10);
 
+  static finished = (task) => task.completed;
+
   static position = (task, index) => {
     task.index = parseInt(index, 10);
     return task;

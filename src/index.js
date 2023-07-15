@@ -44,10 +44,12 @@ const listEvent = (event) => {
       event.target.removeAttribute('readonly');
       event.target.addEventListener('change', editEvent);
       event.target.nextSibling.className = 'icon-remove';
+      event.target.parentNode.classList.add('selected');
       event.target.addEventListener('blur', (event) => {
         setTimeout(() => {
           if (event.target !== null) {
             event.target.nextSibling.className = 'icon-drag';
+            event.target.parentNode.classList.remove('selected');
           }
         }, 100);
       });

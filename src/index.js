@@ -5,10 +5,20 @@ import Tasks from './list.js';
 const tasks = new Tasks();
 const form = document.querySelector('.section-form');
 const list = document.querySelector('.section-list');
+const button = document.querySelector('.section-button');
 
 const displayList = () => {
   list.innerHTML = '';
   list.appendChild(tasks.display());
+};
+
+const formEvent = (event) => {
+  event.preventDefault();
+  if (form.description.value) {
+    tasks.add(form.description.value.trim());
+    form.reset();
+    displayList();
+  }
 };
 
 const editEvent = (event) => {
@@ -51,15 +61,12 @@ const listEvent = (event) => {
   }
 };
 
-const formEvent = (event) => {
-  event.preventDefault();
-  if (form.description.value) {
-    tasks.add(form.description.value.trim());
-    form.reset();
-    displayList();
-  }
+const buttonEvent = () => {
+  tasks.clear();
+  displayList();
 };
 
 form.addEventListener('submit', formEvent);
 list.addEventListener('click', listEvent);
+button.addEventListener('click', buttonEvent);
 displayList();

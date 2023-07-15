@@ -3,6 +3,7 @@ import './style.css';
 import Tasks from './list.js';
 
 const tasks = new Tasks();
+const refresh = document.querySelector('.icon-refresh');
 const form = document.querySelector('.section-form');
 const list = document.querySelector('.section-list');
 const button = document.querySelector('.section-button');
@@ -69,4 +70,5 @@ const buttonEvent = () => {
 form.addEventListener('submit', formEvent);
 list.addEventListener('click', listEvent);
 button.addEventListener('click', buttonEvent);
+refresh.addEventListener('click', displayList);
 displayList();

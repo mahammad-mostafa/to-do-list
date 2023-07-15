@@ -10,10 +10,10 @@ export default class Task {
     let html = '';
     if (task.completed) {
       html += '<input type="checkbox" checked/>';
-      html += `<input type="text" class="completed" value="${task.description}" readonly/>`;
+      html += `<input type="text" class="completed" name="completed" value="${task.description}" readonly/>`;
     } else {
-      html += '<input type="checkbox"/>';
-      html += `<input type="text" value="${task.description}" readonly/>`;
+      html += '<input type="checkbox" name="completed"/>';
+      html += `<input type="text" name="description" value="${task.description}" readonly/>`;
     }
     html += '<button type="button" class="icon-drag"></button>';
     item.id = task.index;

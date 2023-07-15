@@ -48,6 +48,19 @@ export default class List {
     this.store();
   }
 
+  clear = () => {
+    let counter = 1;
+    this.items = this.items.filter((item) => {
+      if (Task.finished(item) === false) {
+        Task.position(item, counter);
+        counter += 1;
+        return item;
+      }
+      return null;
+    });
+    this.store();
+  }
+
   search = (index) => this.items.findIndex((item) => Task.identical(item, index));
 
   store = () => {

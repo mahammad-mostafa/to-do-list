@@ -39,10 +39,13 @@ Also config linters for (`HTML` / `CSS3` / `JavaScript`) in the `.github` folder
 📌 **Key Features:**
 - Responsive layout for all screens
 - Tasks list is loaded dynamically
+- Clear all completed tasks
 - All tasks are locally stored
-- Check any task for completion
+- Mark any task for completion
 - Hover effect for icons & buttons
+- Refresh & reload list from storage 
 - Edit any task by clicking on it & typing
+- Manually remove any task when higlighted
 - Add new tasks with maximum of 50 charaters
  
 <p align="right"><a href="#title">back to top</a></p>

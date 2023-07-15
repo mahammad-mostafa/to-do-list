@@ -3,63 +3,60 @@ import './style.css';
 import Tasks from './list.js';
 
 const tasks = new Tasks();
+const refresh = document.querySelector('.icon-refresh');
 const form = document.querySelector('.section-form');
 const list = document.querySelector('.section-list');
+const button = document.querySelector('.section-button');
 
 const displayList = () => {
-  const fragment = new DocumentFragment();
   list.innerHTML = '';
-  tasks.items.forEach((task) => {
-    const item = document.createElement('li');
-    let html = '';
-    if (task.completed) {
-      html += '<input type="checkbox" checked/>';
-      html += `<input type="text" class="completed" value="${task.description}" readonly/>`;
-    } else {
-      html += '<input type="checkbox"/>';
-      html += `<input type="text" value="${task.description}" readonly/>`;
-    }
-    html += '<button type="button" class="icon-drag"></button>';
-    item.id = task.index;
-    item.innerHTML = html;
-    fragment.appendChild(item);
-  });
-  list.appendChild(fragment);
+  list.appendChild(tasks.displayList());
+};
+
+const formEvent = (event) => {
+  event.preventDefault();
+  if (form.description.value) {
+    tasks.createItem(form.description.value.trim());
+    form.reset();
+    displayList();
+  }
 };
 
 const editEvent = (event) => {
-  const index = parseInt(event.target.parentNode.id, 10);
+  const index = event.target.parentNode.id;
   if (event.target.value.trim()) {
-    tasks.update(index, event.target.value.trim());
+    tasks.updateDescription(index, event.target.value.trim());
   } else {
-    tasks.remove(index);
+    tasks.removeItem(index);
   }
   event.target.removeEventListener('change', editEvent);
   displayList();
 };
 
 const listEvent = (event) => {
-  const index = parseInt(event.target.parentNode.id, 10);
+  const index = event.target.parentNode.id;
   switch (event.target.type) {
     case 'checkbox':
-      tasks.complete(index);
+      tasks.changeStatus(index);
       displayList();
       break;
     case 'text':
       event.target.removeAttribute('readonly');
       event.target.addEventListener('change', editEvent);
       event.target.nextSibling.className = 'icon-remove';
+      event.target.parentNode.classList.add('selected');
       event.target.addEventListener('blur', (event) => {
         setTimeout(() => {
           if (event.target !== null) {
             event.target.nextSibling.className = 'icon-drag';
+            event.target.parentNode.classList.remove('selected');
           }
         }, 100);
       });
       break;
     case 'button':
       if (event.target.className === 'icon-remove') {
-        tasks.remove(index);
+        tasks.removeItem(index);
         displayList();
       }
       break;
@@ -67,15 +64,13 @@ const listEvent = (event) => {
   }
 };
 
-const formEvent = (event) => {
-  event.preventDefault();
-  if (form.description.value) {
-    tasks.add(form.description.value.trim());
-    form.reset();
-    displayList();
-  }
+const buttonEvent = () => {
+  tasks.clearCompleted();
+  displayList();
 };
 
 form.addEventListener('submit', formEvent);
 list.addEventListener('click', listEvent);
+button.addEventListener('click', buttonEvent);
+refresh.addEventListener('click', displayList);
 displayList();

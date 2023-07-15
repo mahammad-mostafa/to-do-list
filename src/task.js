@@ -1,4 +1,4 @@
-import status from './status.js';
+import reverse from './status.js';
 
 export default class Task {
   constructor(index, description) {
@@ -7,7 +7,7 @@ export default class Task {
     this.completed = false;
   }
 
-  static display = (task) => {
+  static displayItem = (task) => {
     const item = document.createElement('li');
     let html = '';
     if (task.completed) {
@@ -23,22 +23,22 @@ export default class Task {
     return item;
   }
 
-  static identical = (task, index) => task.index === parseInt(index, 10);
+  static compareTask = (task, index) => task.index === parseInt(index, 10);
 
-  static finished = (task) => task.completed;
+  static isCompleted = (task) => task.completed;
 
-  static position = (task, index) => {
+  static setIndex = (task, index) => {
     task.index = parseInt(index, 10);
     return task;
   }
 
-  static update = (task, description) => {
+  static updateDescription = (task, description) => {
     task.description = description;
     return task;
   }
 
-  static complete = (task) => {
-    task.completed = status(task.completed);
+  static changeStatus = (task) => {
+    task.completed = reverse(task.completed);
     return task;
   }
 }

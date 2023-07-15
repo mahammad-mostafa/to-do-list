@@ -10,13 +10,13 @@ const button = document.querySelector('.section-button');
 
 const displayList = () => {
   list.innerHTML = '';
-  list.appendChild(tasks.display());
+  list.appendChild(tasks.displayList());
 };
 
 const formEvent = (event) => {
   event.preventDefault();
   if (form.description.value) {
-    tasks.add(form.description.value.trim());
+    tasks.createItem(form.description.value.trim());
     form.reset();
     displayList();
   }
@@ -25,9 +25,9 @@ const formEvent = (event) => {
 const editEvent = (event) => {
   const index = event.target.parentNode.id;
   if (event.target.value.trim()) {
-    tasks.update(index, event.target.value.trim());
+    tasks.updateDescription(index, event.target.value.trim());
   } else {
-    tasks.remove(index);
+    tasks.removeItem(index);
   }
   event.target.removeEventListener('change', editEvent);
   displayList();
@@ -37,7 +37,7 @@ const listEvent = (event) => {
   const index = event.target.parentNode.id;
   switch (event.target.type) {
     case 'checkbox':
-      tasks.complete(index);
+      tasks.changeStatus(index);
       displayList();
       break;
     case 'text':
@@ -56,7 +56,7 @@ const listEvent = (event) => {
       break;
     case 'button':
       if (event.target.className === 'icon-remove') {
-        tasks.remove(index);
+        tasks.removeItem(index);
         displayList();
       }
       break;
@@ -65,7 +65,7 @@ const listEvent = (event) => {
 };
 
 const buttonEvent = () => {
-  tasks.clear();
+  tasks.clearCompleted();
   displayList();
 };
 

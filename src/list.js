@@ -5,65 +5,68 @@ export default class List {
     this.items = JSON.parse(localStorage.getItem('items')) || [];
   }
 
-  display = () => {
+  displayList = () => {
     const fragment = new DocumentFragment();
     this.items.forEach((item) => {
-      fragment.appendChild(Task.display(item));
+      fragment.appendChild(Task.displayItem(item));
     });
     return fragment;
   }
 
-  add = (description) => {
-    const task = new Task(this.items.length + 1, description);
-    this.items.push(task);
-    this.store();
+  createItem = (description) => {
+    this.items.push(new Task(this.items.length + 1, description));
+    this.storeList();
   }
 
-  remove = (index) => {
-    let counter = 1;
-    this.items = this.items.filter((item) => {
-      if (Task.identical(item, index) === false) {
-        Task.position(item, counter);
-        counter += 1;
-        return item;
-      }
-      return null;
-    });
-    this.store();
+  removeItem = (index) => {
+    this.items = this.items.filter(this.sortIndexes.bind(this, { counter: 1, type: 'task', position: index }));
+    this.storeList();
   }
 
-  update = (index, description) => {
-    const position = this.search(index);
+  updateDescription = (index, description) => {
+    const position = this.searchIndex(index);
     if (position !== -1) {
-      Task.update(this.items[position], description);
+      Task.updateDescription(this.items[position], description);
     }
-    this.store();
+    this.storeList();
   }
 
-  complete = (index) => {
-    const position = this.search(index);
+  changeStatus = (index) => {
+    const position = this.searchIndex(index);
     if (position !== -1) {
-      Task.complete(this.items[position]);
+      Task.changeStatus(this.items[position]);
     }
-    this.store();
+    this.storeList();
   }
 
-  clear = () => {
-    let counter = 1;
-    this.items = this.items.filter((item) => {
-      if (Task.finished(item) === false) {
-        Task.position(item, counter);
-        counter += 1;
-        return item;
-      }
-      return null;
-    });
-    this.store();
+  clearCompleted = () => {
+    this.items = this.items.filter(this.sortIndexes.bind(this, { counter: 1, type: 'status', position: null }));
+    this.storeList();
   }
 
-  search = (index) => this.items.findIndex((item) => Task.identical(item, index));
+  searchIndex = (index) => this.items.findIndex((item) => Task.compareTask(item, index));
 
-  store = () => {
+  sortIndexes = (options, item) => {
+    if (this.compareItems(options.type, item, options.position) === false) {
+      Task.setIndex(item, options.counter);
+      options.counter += 1;
+      return item;
+    }
+    return null;
+  }
+
+  compareItems = (type, task, index = null) => {
+    switch (type) {
+      case 'task':
+        return Task.compareTask(task, index);
+      case 'status':
+        return Task.isCompleted(task);
+      default:
+        return null;
+    }
+  }
+
+  storeList = () => {
     localStorage.setItem('items', JSON.stringify(this.items));
   }
 }

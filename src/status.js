@@ -1,1 +1,1 @@
-export default (completed) => !completed;
+export default (status) => !status;

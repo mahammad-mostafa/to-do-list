@@ -7,28 +7,12 @@ const form = document.querySelector('.section-form');
 const list = document.querySelector('.section-list');
 
 const displayList = () => {
-  const fragment = new DocumentFragment();
   list.innerHTML = '';
-  tasks.items.forEach((task) => {
-    const item = document.createElement('li');
-    let html = '';
-    if (task.completed) {
-      html += '<input type="checkbox" checked/>';
-      html += `<input type="text" class="completed" value="${task.description}" readonly/>`;
-    } else {
-      html += '<input type="checkbox"/>';
-      html += `<input type="text" value="${task.description}" readonly/>`;
-    }
-    html += '<button type="button" class="icon-drag"></button>';
-    item.id = task.index;
-    item.innerHTML = html;
-    fragment.appendChild(item);
-  });
-  list.appendChild(fragment);
+  list.appendChild(tasks.display());
 };
 
 const editEvent = (event) => {
-  const index = parseInt(event.target.parentNode.id, 10);
+  const index = event.target.parentNode.id;
   if (event.target.value.trim()) {
     tasks.update(index, event.target.value.trim());
   } else {
@@ -39,7 +23,7 @@ const editEvent = (event) => {
 };
 
 const listEvent = (event) => {
-  const index = parseInt(event.target.parentNode.id, 10);
+  const index = event.target.parentNode.id;
   switch (event.target.type) {
     case 'checkbox':
       tasks.complete(index);

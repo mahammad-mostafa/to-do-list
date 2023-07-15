@@ -29,7 +29,10 @@ Check the below contents for further details about this project.
 
 This project is a simple task management app with `ES6` modules and bundled with `WebPack`.
 All project files are contained in `src` directory.
-Also config linters for (`HTML` / `CSS3` / `JavaScript`) in the `.github` folder. 
+Also config linters for (`HTML` / `CSS3` / `JavaScript`) in the `.github` folder.
+
+📌 **Live Demo:**
+- See the project live from [here](https://mahammad-mostafa.github.io/to-do-list-app/dist).
 
 📌 **Tech Stack:**
 - Page strucutre is built with `HTML5`

@@ -33,7 +33,7 @@ button {
   border: 0;
 }
 
-input[type=text] {
+input {
   flex-grow: 1;
   font-size: inherit;
   text-overflow: ellipsis;
@@ -117,6 +117,7 @@ input[type=text] {
 .section-list input[type=checkbox] {
   width: 20px;
   height: 20px;
+  flex-grow: 0;
   cursor: pointer;
   appearance: none;
   border-radius: 2px;

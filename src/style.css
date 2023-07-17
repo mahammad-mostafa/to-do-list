@@ -51,6 +51,10 @@ input {
   text-decoration: line-through;
 }
 
+.dragged {
+  visibility: hidden;
+}
+
 .section {
   width: 100%;
   max-width: 500px;

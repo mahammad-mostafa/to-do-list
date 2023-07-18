@@ -75,13 +75,13 @@ const dragEvent = (event) => {
   dragged = event.target;
   position = event.clientY;
   event.dataTransfer.effectAllowed = 'move';
-  setTimeout(() => { dragged.classList.add('dragged'); });
+  setTimeout(() => dragged.setAttribute('class', 'dragged'));
 };
 
 const dropEvent = (event) => {
   event.preventDefault();
-  dragged.draggable = false;
-  dragged.classList.remove('dragged');
+  dragged.removeAttribute('class');
+  dragged.removeAttribute('draggable');
 };
 
 const mouseEvent = (event) => {

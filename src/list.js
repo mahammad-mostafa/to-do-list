@@ -44,6 +44,15 @@ export default class List {
     this.storeList();
   }
 
+  insertItem = (elements, id) => {
+    const [first, second] = this.extractIndexes(elements, id);
+    if (first !== second) {
+      this.items.splice(second, 0, this.items.splice(first, 1)[0]);
+    }
+    this.items.forEach(this.sortIndexes.bind(this, { counter: 1, type: 'task', position: 0 }));
+    this.storeList();
+  }
+
   searchIndex = (index) => this.items.findIndex((item) => Task.compareTask(item, index));
 
   sortIndexes = (options, item) => {
@@ -64,6 +73,14 @@ export default class List {
       default:
         return null;
     }
+  }
+
+  extractIndexes = (elements, id) => {
+    let second = 0;
+    while (elements[second].id !== id) {
+      second += 1;
+    }
+    return [parseInt(id, 10) - 1, second];
   }
 
   storeList = () => {

@@ -52,6 +52,7 @@ input {
 }
 
 .dragged {
+  cursor: move;
   visibility: hidden;
 }
 

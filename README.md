@@ -45,6 +45,7 @@ Also config linters for (`HTML` / `CSS3` / `JavaScript`) in the `.github` folder
 - Clear all completed tasks
 - All tasks are locally stored
 - Mark any task for completion
+- Organize tasks by drag & drop
 - Hover effect for icons & buttons
 - Refresh & reload list from storage 
 - Edit any task by clicking on it & typing

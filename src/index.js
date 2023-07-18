@@ -82,6 +82,9 @@ const dropEvent = (event) => {
   event.preventDefault();
   dragged.removeAttribute('class');
   dragged.removeAttribute('draggable');
+  const items = document.querySelectorAll('.section-list li');
+  tasks.insertItem(items, dragged.id);
+  displayList();
 };
 
 const mouseEvent = (event) => {

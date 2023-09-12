@@ -2,7 +2,7 @@
 
 <!-- TITLE -->
 
-# 🏷️ To Do List App
+# 🏷️ To Do List
 
 This is the fourth project in the second module in the **Microverse** program.
 <br/>
